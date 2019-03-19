@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:divider="@drawable/divider_gray"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:showDividers="middle">
+
+    <TextView
+        android:id="@+id/tv_userName"
+        style="@style/textStyle_default"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="用户" />
+
+    <TextView
+        android:id="@+id/tv_userId"
+        style="@style/textStyle_default"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="工号" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        style="@style/textStyle_default"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="0.5"
+        android:background="@color/text_red_default"
+        android:gravity="center"
+        android:text="离岗"
+        android:textColor="@color/white" />
+
+</LinearLayout>
