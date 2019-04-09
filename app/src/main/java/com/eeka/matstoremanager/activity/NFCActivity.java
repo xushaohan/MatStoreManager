@@ -67,8 +67,8 @@ public abstract class NFCActivity extends BaseActivity {
         //取出封装在intent中的TAG
         Tag tagFromIntent = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         byte[] id = tagFromIntent.getId();
-        String cardId = getHex(id);
-        sendNFCData(cardId);
+        long cardId = getDec(id);
+        sendNFCData(String.valueOf(cardId));
     }
 
     public abstract void sendNFCData(String nfc);
