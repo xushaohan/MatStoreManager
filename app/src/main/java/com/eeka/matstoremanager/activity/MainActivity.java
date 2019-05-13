@@ -117,7 +117,7 @@ public class MainActivity extends NFCActivity {
 
         @Override
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-            if (actionId == KeyEvent.KEYCODE_ENDCALL) {
+            if (actionId == KeyEvent.KEYCODE_ENDCALL || actionId == KeyEvent.ACTION_DOWN) {
                 onKeyAction(v);
             }
             return false;
@@ -142,8 +142,14 @@ public class MainActivity extends NFCActivity {
             }
             mEt_storageNo.setText(mLastNum);
         }
+
         String rfid = mEt_rfid.getText().toString();
         if (!isEmpty(mLastNum)) {
+            //处理连衣裙条码格式错误的情况
+//            if (!mLastNum.contains("LYQ&")) {
+//                mLastNum = "LYQ&" + mLastNum;
+//            }
+
             String[] split = mLastNum.split("&");
             if (split.length != 2) {
                 showErrorDialog("仓位不合法");
@@ -159,7 +165,7 @@ public class MainActivity extends NFCActivity {
                     if (isEmpty(rfid))
                         rfid = null;
                     showLoading();
-                    HttpHelper.getWareHouseMessage(area[0], location, mClothType, rfid, MainActivity.this);
+                    HttpHelper.getWareHouseMessage(location.substring(0, 1), location, mClothType, rfid, MainActivity.this);
                 }
             }
         }

@@ -64,12 +64,19 @@ public class SettingActivity extends BaseActivity {
         mTv_systemCode = findViewById(R.id.tv_setting_system);
         String systemCode = SpUtil.get(SpUtil.KEY_SYSTEMCODE, null);
         if (!TextUtils.isEmpty(systemCode)) {
-            if ("D".equals(systemCode)) {
-                mTv_systemCode.setText("D系统");
-            } else if ("Q".equals(systemCode)) {
-                mTv_systemCode.setText("Q系统");
-            } else if ("P".equals(systemCode)) {
-                mTv_systemCode.setText("P系统");
+            switch (systemCode) {
+                case "D":
+                    mTv_systemCode.setText("D系统");
+                    break;
+                case "Q":
+                    mTv_systemCode.setText("Q系统");
+                    break;
+                case "P":
+                    mTv_systemCode.setText("P系统");
+                    break;
+                case "LH_P":
+                    mTv_systemCode.setText("龙华P系统");
+                    break;
             }
         }
 
@@ -140,6 +147,8 @@ public class SettingActivity extends BaseActivity {
                 checked = 0;
             } else if (s.contains("Q")) {
                 checked = 1;
+            } else if (s.contains("龙华P")) {
+                checked = 3;
             } else if (s.contains("P")) {
                 checked = 2;
             }
@@ -161,6 +170,9 @@ public class SettingActivity extends BaseActivity {
                     } else if (which == 2) {
                         SpUtil.save(SpUtil.KEY_SYSTEMCODE, "P");
                         App.BASE_URL = App.BASE_URL_P;
+                    } else if (which == 3) {
+                        SpUtil.save(SpUtil.KEY_SYSTEMCODE, "LH_P");
+                        App.BASE_URL = App.BASE_URL_P_LH;
                     }
                     MyAlertDialog.showConfirmAlert(mContext, "系统切换成功，重启应用后生效。", new View.OnClickListener() {
                         @Override
