@@ -69,33 +69,29 @@ public class App extends Application {
                 MQTT_BROKER = MQTT_D;
                 MTM_URL = URL_MTM_D;
                 XMII_URL = XMII_URL_D;
+                SpUtil.saveSite("8081");
             } else if ("Q".equals(systemCode)) {
                 BASE_URL = BASE_URL_Q;
                 WEB_URL = WEB_URL_Q;
                 MQTT_BROKER = MQTT_Q;
                 MTM_URL = URL_MTM_Q;
                 XMII_URL = XMII_URL_Q;
+                SpUtil.saveSite("8082");
             } else if ("P".equals(systemCode)) {
                 BASE_URL = BASE_URL_P;
                 WEB_URL = WEB_URL_P;
                 MQTT_BROKER = MQTT_P;
                 MTM_URL = URL_MTM_P;
                 XMII_URL = XMII_URL_P;
+                SpUtil.saveSite("8081");
             } else if ("LH_P".equals(systemCode)) {
                 BASE_URL = BASE_URL_P_LH;
                 WEB_URL = WEB_URL_P_LH;
                 MQTT_BROKER = MQTT_Q;
                 MTM_URL = URL_MTM_P;
                 XMII_URL = XMII_URL_P_LH;
+                SpUtil.saveSite("8082");
             }
-        }
-
-        //根据渠道设置工厂站点
-        String channel = getString(R.string.app_channel);
-        if ("LH".equals(channel) || "LH_P".equals(channel)) {
-            SpUtil.saveSite("8082");
-        } else if ("YD".equals(channel)) {
-            SpUtil.saveSite("8081");
         }
 
         //配置初始用户

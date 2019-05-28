@@ -40,8 +40,9 @@ public class LoginActivity extends BaseActivity implements LoginFragment.OnLogin
     @Override
     public void onLogin(boolean success) {
         if (success) {
-
-            startActivity(new Intent(mContext, MainActivity.class));
+            Intent intent = new Intent(mContext, MainActivity.class);
+            intent.putExtra(MainActivity.TAG_INIT, true);
+            startActivity(intent);
             finish();
         }
     }

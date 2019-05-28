@@ -163,15 +163,19 @@ public class SettingActivity extends BaseActivity {
                     dialog.dismiss();
                     if (which == 0) {
                         SpUtil.save(SpUtil.KEY_SYSTEMCODE, "D");
+                        SpUtil.saveSite("8081");
                         App.BASE_URL = App.BASE_URL_D;
                     } else if (which == 1) {
                         SpUtil.save(SpUtil.KEY_SYSTEMCODE, "Q");
+                        SpUtil.saveSite("8082");
                         App.BASE_URL = App.BASE_URL_Q;
                     } else if (which == 2) {
                         SpUtil.save(SpUtil.KEY_SYSTEMCODE, "P");
+                        SpUtil.saveSite("8081");
                         App.BASE_URL = App.BASE_URL_P;
                     } else if (which == 3) {
                         SpUtil.save(SpUtil.KEY_SYSTEMCODE, "LH_P");
+                        SpUtil.saveSite("8082");
                         App.BASE_URL = App.BASE_URL_P_LH;
                     }
                     MyAlertDialog.showConfirmAlert(mContext, "系统切换成功，重启应用后生效。", new View.OnClickListener() {

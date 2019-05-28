@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.eeka.matstoremanager.App;
 import com.eeka.matstoremanager.bo.InStorageInfoBo;
@@ -50,8 +51,9 @@ public class HttpHelper {
     public static final String queryPositionByPadIp_url = BASE_URL + "position/getPositionContext?";
     public static final String findProcessWithPadId_url = BASE_URL + "cutpad/findPadBindOperations?";
     public static final String getCardInfo = BASE_URL + "cutpad/cardRecognition?";
-    public static final String getWareHouseMessage = BASE_URL + "wareHouse/getWareHouseMessage?";
-    public static final String inStorage = BASE_URL + "wareHouse/WareHouseIn?";
+    public static final String getWareHouseMessage = BASE_URL + "wareHouse/getWareHouseMessageByStoringBo?";
+    public static final String getWareHouseMessageByRFID = BASE_URL + "wareHouse/getWareHouseMessageByRfid?";
+    public static final String inStorage = BASE_URL + "wareHouse/WareHouseBatchIn?";
     private static Context mContext;
 
     private static HttpRequest.HttpRequestBo mCookieOutRequest;//记录cookie过期的请求，用于重新登录后再次请求
@@ -63,28 +65,29 @@ public class HttpHelper {
     /**
      * 入库，调用此方法必须有员工登录在岗
      */
-    public static void inStorage(InStorageInfoBo info, HttpCallback callback) {
+    public static void inStorage(List<InStorageInfoBo> info, HttpCallback callback) {
         RequestParams params = getBaseParams();
-        JSONObject json = new JSONObject();
-        json.put("CLOTH_TYPE", info.getCLOTH_TYPE());
-        json.put("STOR_AREA", info.getSTOR_AREA());
-        json.put("STOR_LOCATION", info.getSTOR_LOCATION());
-        json.put("SHOP_ORDER", info.getSHOP_ORDER());
-        json.put("WORK_CENTER", info.getWORK_CENTER());
-        json.put("ITEM", info.getITEM());
-        json.put("RFID", info.getRFID());
-        json.put("SIZE", info.getSIZE());
-        json.put("QUANTITY", info.getQUANTITY());
-        List<UserInfoBo> users = SpUtil.getPositionUsers();
-        json.put("USER_ID", users.get(0).getEMPLOYEE_NUMBER());
-        params.put("params",json.toJSONString());
+        params.put("params", JSON.toJSONString(info));
         HttpRequest.post(inStorage, params, getResponseHandler(inStorage, callback));
     }
 
     /**
      * 获取库位信息
      */
-    public static void getWareHouseMessage(String storageArea, String storageLocation, String type, String rfid, HttpCallback callback) {
+    public static void getWareHouseMessage(String storageArea, String storageLocation, String type, HttpCallback callback) {
+        RequestParams params = getBaseParams();
+        JSONObject json = new JSONObject();
+        json.put("STOR_AREA", storageArea);
+        json.put("STOR_LOCATION", storageLocation);
+        json.put("CLOTH_TYPE", type);
+        params.put("params", json.toJSONString());
+        HttpRequest.post(getWareHouseMessage, params, getResponseHandler(getWareHouseMessage, callback));
+    }
+
+    /**
+     * 获取库位信息
+     */
+    public static void getWareHouseMessageByRFID(String storageArea, String storageLocation, String type, String rfid, HttpCallback callback) {
         RequestParams params = getBaseParams();
         JSONObject json = new JSONObject();
         json.put("STOR_AREA", storageArea);
@@ -92,7 +95,7 @@ public class HttpHelper {
         json.put("CLOTH_TYPE", type);
         json.put("RFID", rfid);
         params.put("params", json.toJSONString());
-        HttpRequest.post(getWareHouseMessage, params, getResponseHandler(getWareHouseMessage, callback));
+        HttpRequest.post(getWareHouseMessageByRFID, params, getResponseHandler(getWareHouseMessageByRFID, callback));
     }
 
     /**

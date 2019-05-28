@@ -57,7 +57,8 @@ public abstract class NFCActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mNfcAdapter.enableForegroundDispatch(this, pi, null, null);
+        if (mNfcAdapter != null)
+            mNfcAdapter.enableForegroundDispatch(this, pi, null, null);
     }
 
     /**
@@ -68,6 +69,7 @@ public abstract class NFCActivity extends BaseActivity {
         Tag tagFromIntent = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         byte[] id = tagFromIntent.getId();
         long cardId = getDec(id);
+        Logger.d("NFC卡号：" + cardId);
         sendNFCData(String.valueOf(cardId));
     }
 

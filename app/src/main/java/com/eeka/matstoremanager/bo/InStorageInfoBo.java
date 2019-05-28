@@ -23,9 +23,17 @@ public class InStorageInfoBo {
     private String ITEM;
     private String RFID;
     private String SIZE;
-    private String QUANTITY;
     private String STOR_QUANTITY;
+    private String ME_QUANTITY;
     private String USER_ID;
+
+    public String getME_QUANTITY() {
+        return ME_QUANTITY;
+    }
+
+    public void setME_QUANTITY(String ME_QUANTITY) {
+        this.ME_QUANTITY = ME_QUANTITY;
+    }
 
     public String getSTOR_QUANTITY() {
         return STOR_QUANTITY;
@@ -97,14 +105,6 @@ public class InStorageInfoBo {
 
     public void setSIZE(String SIZE) {
         this.SIZE = SIZE;
-    }
-
-    public String getQUANTITY() {
-        return QUANTITY;
-    }
-
-    public void setQUANTITY(String QUANTITY) {
-        this.QUANTITY = QUANTITY;
     }
 
     public String getUSER_ID() {

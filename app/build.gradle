@@ -6,7 +6,7 @@ android {
         applicationId "com.eeka.matstoremanager"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 3
+        versionCode 6
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
