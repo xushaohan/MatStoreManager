@@ -6,7 +6,6 @@ import android.text.TextUtils;
 
 import com.alibaba.fastjson.util.TypeUtils;
 import com.eeka.matstoremanager.bo.UserInfoBo;
-import com.eeka.matstoremanager.utils.NetUtil;
 import com.eeka.matstoremanager.utils.SpUtil;
 import com.eeka.matstoremanager.utils.SystemUtils;
 import com.tencent.bugly.Bugly;

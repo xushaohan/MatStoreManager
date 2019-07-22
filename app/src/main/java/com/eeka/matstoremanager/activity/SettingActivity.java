@@ -147,10 +147,10 @@ public class SettingActivity extends BaseActivity {
                 checked = 0;
             } else if (s.contains("Q")) {
                 checked = 1;
-            } else if (s.contains("龙华P")) {
-                checked = 3;
             } else if (s.contains("P")) {
                 checked = 2;
+            } else if (s.contains("龙华P")) {
+                checked = 3;
             }
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
