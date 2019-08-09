@@ -104,7 +104,7 @@
                 <TextView
                     style="@style/textStyle_default"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
+                    android:layout_weight="2.2"
                     android:gravity="center"
                     android:padding="8dp"
                     android:text="RFID卡号" />
@@ -127,7 +127,7 @@
                     
                     <LinearLayout
                         android:id="@+id/layout_storeInfo"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:divider="@drawable/divider_gray"
                         android:orientation="vertical"

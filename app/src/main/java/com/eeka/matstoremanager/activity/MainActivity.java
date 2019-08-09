@@ -114,8 +114,8 @@ public class MainActivity extends NFCActivity {
     public void sendNFCData(String value) {
         for (int i = 0; i < mLayout_storeInfo.getChildCount(); i++) {
             View itemView = mLayout_storeInfo.getChildAt(i);
-            EditText et_rfid = itemView.findViewById(R.id.tv_rfidNo);
-            if (et_rfid.getText().toString().equals(value)) {
+            TextView tv_rfid = itemView.findViewById(R.id.tv_rfidNo);
+            if (tv_rfid.getText().toString().equals(value)) {
                 showAlert("卡号：" + value + " 已在当前仓库内，请勿重复刷卡。");
                 return;
             }
@@ -268,8 +268,8 @@ public class MainActivity extends NFCActivity {
 
         for (int i = 0; i < childCount; i++) {
             View childAt = mLayout_storeInfo.getChildAt(i);
-            EditText et_rfid = childAt.findViewById(R.id.tv_rfidNo);
-            String rfid = et_rfid.getText().toString();
+            TextView tv_rfid = childAt.findViewById(R.id.tv_rfidNo);
+            String rfid = tv_rfid.getText().toString();
             if (isEmpty(rfid)) {
                 //卡号都未获取的情况当做本条数据为空，直接跳过
                 break;
@@ -279,8 +279,8 @@ public class MainActivity extends NFCActivity {
                 showErrorDialog("卡号 " + rfid + "未获取数据，请刷卡获取。");
                 return;
             }
-            EditText et_inQTY = childAt.findViewById(R.id.tv_inQTY);
-            String s = et_inQTY.getText().toString();
+            TextView tv_inQTY = childAt.findViewById(R.id.tv_inQTY);
+            String s = tv_inQTY.getText().toString();
             if (isEmpty(s)) {
                 MyAlertDialog.showAlert(mContext, "入库数不能为空");
                 return;
