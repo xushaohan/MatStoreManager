@@ -114,8 +114,8 @@ public class MainActivity extends NFCActivity {
     public void sendNFCData(String value) {
         for (int i = 0; i < mLayout_storeInfo.getChildCount(); i++) {
             View itemView = mLayout_storeInfo.getChildAt(i);
-            TextView tv_rfid = itemView.findViewById(R.id.tv_rfidNo);
-            if (tv_rfid.getText().toString().equals(value)) {
+            EditText et_rfid = itemView.findViewById(R.id.et_rfidNo);
+            if (et_rfid.getText().toString().equals(value)) {
                 showAlert("卡号：" + value + " 已在当前仓库内，请勿重复刷卡。");
                 return;
             }
@@ -145,7 +145,7 @@ public class MainActivity extends NFCActivity {
         View itemView = LayoutInflater.from(mContext).inflate(R.layout.item_storeinfo, null);
         TextView tv_shopOrder = itemView.findViewById(R.id.tv_shopOrder);
         TextView tv_size = itemView.findViewById(R.id.tv_size);
-        TextView tv_rfid = itemView.findViewById(R.id.tv_rfidNo);
+        EditText tv_rfid = itemView.findViewById(R.id.et_rfidNo);
         TextView tv_inQTY = itemView.findViewById(R.id.tv_inQTY);
 
         tv_shopOrder.setText(item.getSHOP_ORDER());
@@ -161,10 +161,8 @@ public class MainActivity extends NFCActivity {
         @Override
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
             if (actionId == KeyEvent.KEYCODE_ENDCALL || actionId == KeyEvent.ACTION_DOWN) {
-                if (v.getId() == R.id.et_storageNo) {
-                    String storage = mEt_storageNo.getText().toString();
-                    getMessage(storage);
-                }
+                String value = v.getText().toString();
+                getMessage(value);
             }
             return false;
         }
@@ -183,6 +181,7 @@ public class MainActivity extends NFCActivity {
         } else {
             if (isEmpty(storageNo)) {
                 showAlert("请先扫描库位获取数据再扫描 RFID 卡");
+                return;
             }
         }
 
@@ -198,16 +197,14 @@ public class MainActivity extends NFCActivity {
         if (area.length != 2) {
             showErrorDialog("仓位不合法");
             locationReqFocus();
+            return;
         }
 
+        showLoading();
         if (key.contains("&")) {
-            showLoading();
             HttpHelper.getWareHouseMessage(location.substring(0, 1), location, mClothType, this);
         } else {
-            if (!isEmpty(storageNo)) {
-                showLoading();
-                HttpHelper.getWareHouseMessageByRFID(location.substring(0, 1), location, mClothType, key, this);
-            }
+            HttpHelper.getWareHouseMessageByRFID(location.substring(0, 1), location, mClothType, key, this);
         }
     }
 
@@ -268,8 +265,8 @@ public class MainActivity extends NFCActivity {
 
         for (int i = 0; i < childCount; i++) {
             View childAt = mLayout_storeInfo.getChildAt(i);
-            TextView tv_rfid = childAt.findViewById(R.id.tv_rfidNo);
-            String rfid = tv_rfid.getText().toString();
+            EditText et_rfid = childAt.findViewById(R.id.et_rfidNo);
+            String rfid = et_rfid.getText().toString();
             if (isEmpty(rfid)) {
                 //卡号都未获取的情况当做本条数据为空，直接跳过
                 break;
