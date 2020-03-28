@@ -5,146 +5,161 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border_black"
-        android:divider="@drawable/divider_gray"
-        android:orientation="vertical"
-        android:showDividers="middle">
-        
-        <TextView
-            style="@style/textStyle_default"
-            android:layout_width="match_parent"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="库位信息"
-            android:textColor="@color/white"
-            android:textSize="@dimen/textSize_title" />
+        android:layout_height="match_parent">
         
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="15dp">
-            
-            <TextView
-                style="@style/textStyle_default"
-                android:gravity="center"
-                android:text="仓位："
-                android:textSize="@dimen/textSize_title" />
-            
-            <EditText
-                android:id="@+id/et_storageNo"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_black"
-                android:gravity="center"
-                android:imeOptions="actionDone"
-                android:padding="8dp"
-                android:singleLine="true"
-                android:textSize="@dimen/textSize_title" />
-        </LinearLayout>
-        
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary">
+            android:background="@drawable/border_black"
+            android:divider="@drawable/divider_gray"
+            android:orientation="vertical"
+            android:showDividers="middle">
             
             <TextView
                 style="@style/textStyle_default"
                 android:layout_width="match_parent"
+                android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="入库信息"
+                android:text="库位信息"
                 android:textColor="@color/white"
                 android:textSize="@dimen/textSize_title" />
             
-            <Button
-                android:id="@+id/btn_clean"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_normal"
-                android:text="清空" />
-        </RelativeLayout>
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@drawable/divider_gray"
-            android:orientation="vertical"
-            android:showDividers="middle">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="15dp">
+                
+                <TextView
+                    style="@style/textStyle_default"
+                    android:gravity="center"
+                    android:text="仓位："
+                    android:textSize="@dimen/textSize_title" />
+                
+                <EditText
+                    android:id="@+id/et_storageNo"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_black"
+                    android:gravity="center"
+                    android:imeOptions="actionDone"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/textSize_title" />
+            </LinearLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary">
+                
+                <TextView
+                    style="@style/textStyle_default"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="入库信息"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSize_title" />
+                
+                <Button
+                    android:id="@+id/btn_clean"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btn_normal"
+                    android:text="清空" />
+            </RelativeLayout>
             
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:divider="@drawable/divider_gray"
-                android:gravity="center"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:showDividers="middle">
-                
-                <TextView
-                    style="@style/textStyle_default"
-                    android:layout_width="0dp"
-                    android:layout_weight="3"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="工单号" />
-                
-                <TextView
-                    style="@style/textStyle_default"
-                    android:layout_width="50dp"
-                    android:gravity="center"
-                    android:text="码数" />
-                
-                <TextView
-                    style="@style/textStyle_default"
-                    android:layout_width="0dp"
-                    android:layout_weight="2.2"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="RFID卡号" />
-                
-                <TextView
-                    style="@style/textStyle_default"
-                    android:layout_width="60dp"
-                    android:gravity="center"
-                    android:text="入库数" />
-            </LinearLayout>
-            
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
                 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:divider="@drawable/divider_gray"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:showDividers="middle">
+                    
+                    <TextView
+                        style="@style/textStyle_default"
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="工单号" />
+                    
+                    <TextView
+                        style="@style/textStyle_default"
+                        android:layout_width="50dp"
+                        android:gravity="center"
+                        android:text="码数" />
+                    
+                    <TextView
+                        style="@style/textStyle_default"
+                        android:layout_width="0dp"
+                        android:layout_weight="2.2"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="RFID卡号" />
+                    
+                    <TextView
+                        style="@style/textStyle_default"
+                        android:layout_width="60dp"
+                        android:gravity="center"
+                        android:text="入库数" />
+                </LinearLayout>
+                
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                     
                     <LinearLayout
-                        android:id="@+id/layout_storeInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:divider="@drawable/divider_gray"
-                        android:orientation="vertical"
-                        android:showDividers="middle|end" />
+                        android:orientation="vertical">
+                        
+                        <LinearLayout
+                            android:id="@+id/layout_storeInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:divider="@drawable/divider_gray"
+                            android:orientation="vertical"
+                            android:showDividers="middle|end" />
+                        
+                        <Button
+                            android:id="@+id/btn_storage"
+                            style="@style/btnStyle_primary"
+                            android:layout_width="match_parent"
+                            android:layout_margin="20dp"
+                            android:text="入库" />
                     
-                    <Button
-                        android:id="@+id/btn_storage"
-                        style="@style/btnStyle_primary"
-                        android:layout_width="match_parent"
-                        android:layout_margin="20dp"
-                        android:text="入库" />
-                
-                </LinearLayout>
-            </ScrollView>
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+        
         </LinearLayout>
+        
+        <TextView
+            android:id="@+id/tv_waitList"
+            style="@style/textStyle_default"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:padding="15dp"
+            android:textColor="#2196F3"
+            android:text="待入库位清单" />
     
-    </LinearLayout>
+    </RelativeLayout>
     
     <RelativeLayout
         android:id="@+id/layout_slide"

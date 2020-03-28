@@ -54,12 +54,21 @@ public class HttpHelper {
     public static final String getWareHouseMessage = BASE_URL + "wareHouse/getWareHouseMessageByStoringBo?";
     public static final String getWareHouseMessageByRFID = BASE_URL + "wareHouse/getWareHouseMessageByRfid?";
     public static final String inStorage = BASE_URL + "wareHouse/WareHouseBatchIn?";
+    public static final String getStorageWaitList = BASE_URL + "wareHouse/getPendingtorageMessage?";
     private static Context mContext;
 
     private static HttpRequest.HttpRequestBo mCookieOutRequest;//记录cookie过期的请求，用于重新登录后再次请求
 
     static {
         mContext = App.mContext;
+    }
+
+    /**
+     * 获取待入库清单
+     */
+    public static void getStorageWaitList(HttpCallback callback) {
+        RequestParams params = getBaseParams();
+        HttpRequest.post(getStorageWaitList, params, getResponseHandler(getStorageWaitList, callback));
     }
 
     /**

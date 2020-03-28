@@ -54,8 +54,6 @@ public class MainActivity extends NFCActivity {
 
     private ScanReceiver mScanReceiver;
 
-    private int mOriginalDataCount;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,8 +112,8 @@ public class MainActivity extends NFCActivity {
     public void sendNFCData(String value) {
         for (int i = 0; i < mLayout_storeInfo.getChildCount(); i++) {
             View itemView = mLayout_storeInfo.getChildAt(i);
-            EditText et_rfid = itemView.findViewById(R.id.et_rfidNo);
-            if (et_rfid.getText().toString().equals(value)) {
+            TextView tv_rfid = itemView.findViewById(R.id.tv_rfidNo);
+            if (tv_rfid.getText().toString().equals(value)) {
                 showAlert("卡号：" + value + " 已在当前仓库内，请勿重复刷卡。");
                 return;
             }
@@ -137,7 +135,7 @@ public class MainActivity extends NFCActivity {
         findViewById(R.id.btn_storage).setOnClickListener(this);
         findViewById(R.id.btn_login).setOnClickListener(this);
         findViewById(R.id.btn_clean).setOnClickListener(this);
-
+        findViewById(R.id.tv_waitList).setOnClickListener(this);
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -145,7 +143,7 @@ public class MainActivity extends NFCActivity {
         View itemView = LayoutInflater.from(mContext).inflate(R.layout.item_storeinfo, null);
         TextView tv_shopOrder = itemView.findViewById(R.id.tv_shopOrder);
         TextView tv_size = itemView.findViewById(R.id.tv_size);
-        EditText tv_rfid = itemView.findViewById(R.id.et_rfidNo);
+        TextView tv_rfid = itemView.findViewById(R.id.tv_rfidNo);
         TextView tv_inQTY = itemView.findViewById(R.id.tv_inQTY);
 
         tv_shopOrder.setText(item.getSHOP_ORDER());
@@ -244,6 +242,9 @@ public class MainActivity extends NFCActivity {
                         .setMessage("确定清空所有数据吗？")
                         .create().show();
                 break;
+            case R.id.tv_waitList:
+                startActivity(new Intent(mContext, WaitList.class));
+                break;
         }
     }
 
@@ -258,15 +259,11 @@ public class MainActivity extends NFCActivity {
             showAlert("入库信息不能为空");
             return;
         }
-        if (childCount == mOriginalDataCount) {
-            showAlert("已入库，无需重复入库");
-            return;
-        }
 
         for (int i = 0; i < childCount; i++) {
             View childAt = mLayout_storeInfo.getChildAt(i);
-            EditText et_rfid = childAt.findViewById(R.id.et_rfidNo);
-            String rfid = et_rfid.getText().toString();
+            TextView tv_rfid = childAt.findViewById(R.id.tv_rfidNo);
+            String rfid = tv_rfid.getText().toString();
             if (isEmpty(rfid)) {
                 //卡号都未获取的情况当做本条数据为空，直接跳过
                 break;
@@ -423,7 +420,6 @@ public class MainActivity extends NFCActivity {
                 mLayout_storeInfo.removeAllViews();
                 mList_data = JSON.parseArray(resultJSON.getJSONArray("result").toString(), InStorageInfoBo.class);
                 if (mList_data != null && mList_data.size() != 0) {
-                    mOriginalDataCount = mList_data.size();
                     for (InStorageInfoBo item : mList_data) {
                         mLayout_storeInfo.addView(getItemView(item));
                     }
