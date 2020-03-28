@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/divider_gray"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+        
+        <TextView
+            android:id="@+id/tv_workCenter"
+            style="@style/textStyle_default"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:padding="5dp" />
+        
+        <TextView
+            android:id="@+id/tv_shopOrder"
+            style="@style/textStyle_default"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:padding="5dp" />
+        
+        <TextView
+            android:id="@+id/tv_item"
+            style="@style/textStyle_default"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:padding="5dp" />
+        
+        <TextView
+            android:id="@+id/tv_sizeCode"
+            style="@style/textStyle_default"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dp" />
+        
+        <TextView
+            android:id="@+id/tv_packageNo"
+            style="@style/textStyle_default"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dp" />
+        
+        <TextView
+            android:id="@+id/tv_packageQty"
+            style="@style/textStyle_default"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dp" />
+    
+    </LinearLayout>
+</LinearLayout>

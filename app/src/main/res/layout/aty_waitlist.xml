@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@drawable/divider_gray"
+    android:orientation="vertical"
+    android:showDividers="middle|end">
+    
+    <include layout="@layout/layout_title" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/divider_gray"
+        android:divider="@drawable/divider_gray"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+        
+        <TextView
+            style="@style/textStyle_default"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="工作中心" />
+        
+        <TextView
+            style="@style/textStyle_default"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="工单号" />
+        
+        <TextView
+            style="@style/textStyle_default"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="款号" />
+        
+        <TextView
+            style="@style/textStyle_default"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="码数" />
+        
+        <TextView
+            style="@style/textStyle_default"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="包号" />
+        
+        <TextView
+            style="@style/textStyle_default"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="分包数" />
+    
+    </LinearLayout>
+    
+    <ListView
+        android:id="@+id/lv_waitList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
