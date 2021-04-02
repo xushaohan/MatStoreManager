@@ -6,8 +6,8 @@ android {
         applicationId "com.eeka.matstoremanager"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 14
-        versionName "1.14"
+        versionCode 15
+        versionName "1.15"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -42,7 +42,7 @@ android {
     //指定打包后应用名称
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "MatStoreManager_${variant.versionName}_${variant.versionCode}_${variant.productFlavors[0].name}.apk"
+            outputFileName = "MatStoreManager_${variant.versionName}_${variant.productFlavors[0].name}.apk"
         }
     }
 

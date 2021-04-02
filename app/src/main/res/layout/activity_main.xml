@@ -8,10 +8,20 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+    
+        <TextView
+            android:id="@+id/tv_waitList"
+            style="@style/textStyle_default"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:padding="15dp"
+            android:textColor="#2196F3"
+            android:text="待入库位清单" />
         
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@id/tv_waitList"
             android:background="@drawable/border_black"
             android:divider="@drawable/divider_gray"
             android:orientation="vertical"
@@ -150,15 +160,6 @@
         
         </LinearLayout>
         
-        <TextView
-            android:id="@+id/tv_waitList"
-            style="@style/textStyle_default"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:padding="15dp"
-            android:textColor="#2196F3"
-            android:text="待入库位清单" />
-    
     </RelativeLayout>
     
     <RelativeLayout

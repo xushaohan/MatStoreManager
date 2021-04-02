@@ -80,7 +80,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     protected void showLoading() {
-        showLoading(getString(R.string.loading), true);
+        showLoading(getString(R.string.loading), false);
     }
 
     protected void showLoading(String msg, boolean cancelAble) {

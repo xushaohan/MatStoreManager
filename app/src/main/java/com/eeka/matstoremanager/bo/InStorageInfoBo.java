@@ -26,6 +26,15 @@ public class InStorageInfoBo {
     private String STOR_QUANTITY;
     private String ME_QUANTITY;
     private String USER_ID;
+    private boolean isIn;//是否已入库
+
+    public boolean isIn() {
+        return isIn;
+    }
+
+    public void setIn(boolean in) {
+        isIn = in;
+    }
 
     public String getME_QUANTITY() {
         return ME_QUANTITY;

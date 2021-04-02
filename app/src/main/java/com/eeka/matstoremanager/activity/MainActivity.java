@@ -34,6 +34,7 @@ import com.eeka.matstoremanager.utils.NetUtil;
 import com.eeka.matstoremanager.utils.SpUtil;
 import com.tencent.bugly.beta.Beta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends NFCActivity {
@@ -261,6 +262,10 @@ public class MainActivity extends NFCActivity {
         }
 
         for (int i = 0; i < childCount; i++) {
+            InStorageInfoBo data = mList_data.get(i);
+            if(data.isIn()){//已经在库内的数据，不做任何处理
+                continue;
+            }
             View childAt = mLayout_storeInfo.getChildAt(i);
             TextView tv_rfid = childAt.findViewById(R.id.tv_rfidNo);
             String rfid = tv_rfid.getText().toString();
@@ -284,7 +289,6 @@ public class MainActivity extends NFCActivity {
                 showErrorDialog("有条目未获取数据，请核对");
                 return;
             }
-            InStorageInfoBo data = mList_data.get(i);
             int inQTY = Integer.valueOf(s);
             if (inQTY > Integer.valueOf(data.getME_QUANTITY())) {
                 showErrorDialog("入库数量不能大于卡内数量");
@@ -294,8 +298,14 @@ public class MainActivity extends NFCActivity {
             data.setCLOTH_TYPE(mClothType);
             data.setSTOR_QUANTITY(s);
         }
+        List<InStorageInfoBo> list = new ArrayList<>();
+        for (InStorageInfoBo item : mList_data) {
+            if(!item.isIn()){
+                list.add(item);
+            }
+        }
         showLoading();
-        HttpHelper.inStorage(mList_data, this);
+        HttpHelper.inStorage(list, this);
     }
 
     @Override
@@ -421,6 +431,7 @@ public class MainActivity extends NFCActivity {
                 mList_data = JSON.parseArray(resultJSON.getJSONArray("result").toString(), InStorageInfoBo.class);
                 if (mList_data != null && mList_data.size() != 0) {
                     for (InStorageInfoBo item : mList_data) {
+                        item.setIn(true);
                         mLayout_storeInfo.addView(getItemView(item));
                     }
                 }
@@ -432,6 +443,9 @@ public class MainActivity extends NFCActivity {
                 mList_data.add(item);
                 mLayout_storeInfo.addView(getItemView(item));
             } else if (HttpHelper.inStorage.equals(url)) {
+                for (InStorageInfoBo item : mList_data) {
+                    item.setIn(true);
+                }
                 toast("入库成功");
             } else if (HttpHelper.positionLogout_url.equals(url)) {
                 toast("用户离岗成功");
